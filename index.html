@@ -3,148 +3,479 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Técnico: Chatbot de Saúde</title>
+    <title>Chatbot de Saúde - Apresentação</title>
+    <!-- Fontes Premium -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
+    <!-- Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
-        * { box-sizing: border-box; }
-        body { background-color: #f3f4f6; display: grid; gap: 30px; grid-template-columns: 1fr; margin: 0; min-height: 100vh; padding: 30px 0; place-items: center; }
-        .slide-container { align-items: center; background-color: #ffffff; border-radius: 4px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); display: flex; flex-direction: column; font-family: 'Open Sans', sans-serif; height: 720px; justify-content: center; overflow: hidden; padding: 60px; position: relative; width: 1280px; border-top: 8px solid #00205b; }
-        h1, h2, h3, .slide-title { color: #00205b; font-family: 'Montserrat', sans-serif; font-weight: 700; margin: 0; }
-        p, li { color: #333333; font-size: 18px; line-height: 1.6; }
-        .slide-title { font-size: 38px; margin-bottom: 35px; text-align: left; width: 100%; border-bottom: 2px solid #00a3e0; padding-bottom: 10px; }
-        .subtitle { color: #00a3e0; font-weight: 600; font-size: 22px; margin-bottom: 20px; text-transform: uppercase; }
-        .content-area { display: flex; flex-direction: column; flex-grow: 1; width: 100%; }
-        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; width: 100%; }
-        .tile { background-color: #f8f9fa; border-top: 4px solid #00a3e0; flex: 1; padding: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
-        .video-container { width: 300px; height: 500px; border-radius: 20px; border: 8px solid #333; overflow: hidden; background: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.3); margin: 0 auto; display: flex; justify-content: center; }
-        video { width: 100%; height: 100%; object-fit: contain; }
-        .links-box { background-color: #f8f9fa; padding: 30px; margin-top: 20px; border: 1px solid #e2e8f0; width: fit-content; margin: auto; }
-        .links-box a { color: #00a3e0; text-decoration: none; font-weight: 600; }
+        /* RESET & SETUP BASE */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 4px; }
+
+        body, html {
+            height: 100vh;
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #f8fafc;
+            /* Isso cria o efeito de PowerPoint rolando slide por slide */
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+        }
+
+        /* ANIMAÇÕES */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ESTRUTURA DO SLIDE */
+        .slide {
+            height: 100vh;
+            width: 100vw;
+            scroll-snap-align: start;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-content {
+            width: 100%;
+            max-width: 1200px;
+            padding: 40px;
+            z-index: 10;
+        }
+
+        /* TIPOGRAFIA */
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+        
+        .title-main {
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            /* Texto com gradiente */
+            background: linear-gradient(135deg, #38bdf8 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .title-section {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #f8fafc;
+        }
+        
+        .title-section span { color: #38bdf8; } /* Destaque azul */
+
+        p {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: #cbd5e1;
+            margin-bottom: 20px;
+        }
+
+        /* COMPONENTES */
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* TEMAS DE SLIDE */
+        .bg-dark { background-color: #0f172a; }
+        .bg-gradient-tech { background: radial-gradient(circle at top right, #1e3a8a, #0f172a); }
+        .bg-light { background-color: #f8fafc; color: #0f172a; }
+        .bg-light p { color: #475569; }
+        .bg-light .title-section { color: #0f172a; }
+
+        /* GRID LAYOUTS */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* CARDS */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #38bdf8;
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        .bg-light .card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .bg-light .card:hover {
+            border-color: #38bdf8;
+            box-shadow: 0 20px 40px rgba(56, 189, 248, 0.15);
+        }
+
+        .card i {
+            font-size: 3rem;
+            color: #38bdf8;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* FLUXOGRAMA (Arquitetura) */
+        .flow-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .flow-box {
+            background: #1e293b;
+            border: 2px solid #334155;
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            width: 28%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .flow-box.highlight {
+            border-color: #38bdf8;
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        .flow-box i { font-size: 40px; color: #38bdf8; margin-bottom: 15px; }
+        .flow-box h4 { font-size: 1.2rem; color: #f8fafc; margin-bottom: 5px; font-family: 'Poppins'; }
+        .flow-box p { font-size: 0.9rem; margin: 0; color: #94a3b8; }
+        .flow-arrow { font-size: 2rem; color: #475569; }
+
+        /* MOCKUP DO CELULAR (Incrível) */
+        .phone-mockup {
+            width: 320px;
+            height: 650px;
+            background: #000;
+            border: 14px solid #1e293b; /* Borda do celular */
+            border-radius: 45px; /* Cantos arredondados do celular */
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 0 0 2px #334155;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        /* O "Notch" (Câmera) do topo do celular */
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 25px;
+            background: #1e293b;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            z-index: 10;
+        }
+
+        .phone-mockup video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Faz o vídeo preencher a tela */
+            border-radius: 30px;
+        }
+
+        /* LINKS FINAIS */
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: #1e293b;
+            color: #f8fafc;
+            padding: 15px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            border: 1px solid #334155;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        .github-btn:hover {
+            background: #38bdf8;
+            color: #0f172a;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
+        }
+
+        /* GRÁFICOS DE FUNDO (CSS Puro) */
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: 1;
+            opacity: 0.5;
+        }
+        .blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: #2563eb; border-radius: 50%; }
+        .blob-2 { bottom: -10%; right: -10%; width: 400px; height: 400px; background: #0891b2; border-radius: 50%; }
+
+        /* Animação de entrada dos elementos */
+        .slide-content > * {
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+        .slide-content > *:nth-child(1) { animation-delay: 0.1s; }
+        .slide-content > *:nth-child(2) { animation-delay: 0.2s; }
+        .slide-content > *:nth-child(3) { animation-delay: 0.3s; }
+        .slide-content > *:nth-child(4) { animation-delay: 0.4s; }
+
     </style>
 </head>
 <body>
 
-<div class="slide-container">
-    <div style="text-align: left; width: 100%; padding: 0 40px;">
-        <p class="subtitle">Avaliação 01 - Introdução à Computação</p>
-        <h1 style="font-size: 54px;">Chatbot de Saúde no WhatsApp</h1>
-        <p style="font-size: 22px; margin-top: 20px;">Análise diagnóstica e prototipagem funcional para automação hospitalar.</p>
-        <div style="margin-top: 50px; border-left: 4px solid #00a3e0; padding-left: 15px;">
-            <strong>Integrantes:</strong> Arthur Moura Campos e Arthur Souza Mendes
-        </div>
-    </div>
-</div>
-
-<div class="slide-container">
-    <h2 class="slide-title">01. Identificação do Problema</h2>
-    <div class="content-area">
-        <div class="two-column">
-            <div>
-                <h3>Cenário de Diagnóstico</h3>
-                <p>O acesso primário à saúde sofre com canais de comunicação lentos e filas presenciais para processos simples, gerando atrasos em agendamentos.</p>
-                <h3 style="margin-top:20px;">A Lacuna de TI</h3>
-                <p>Identificamos a necessidade de uma interface de software que utilize APIs de comunicação instantânea para triagem administrativa 24/7.</p>
-            </div>
-            <div style="background: #f8f9fa; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
-                <i class="fa-solid fa-hospital-user" style="font-size: 150px; color: #00205b;"></i>
+    <!-- SLIDE 1: CAPA (Dark Tech) -->
+    <section class="slide bg-gradient-tech">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="slide-content" style="text-align: center;">
+            <div class="badge">Avaliação 01 - Introdução à Computação</div>
+            <h1 class="title-main">Chatbot Hospitalar</h1>
+            <p style="font-size: 1.5rem; max-width: 800px; margin: 0 auto 40px auto; color: #94a3b8;">
+                Automação de triagem e agendamento via WhatsApp integrado com Python.
+            </p>
+            <div style="display: inline-flex; gap: 40px; background: rgba(15, 23, 42, 0.6); padding: 20px 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+                <div style="text-align: left;">
+                    <span style="color: #64748b; font-size: 0.9rem; text-transform: uppercase;">Desenvolvedor</span><br>
+                    <strong style="font-size: 1.2rem;">Arthur Moura Campos</strong>
+                </div>
+                <div style="width: 1px; background: #334155;"></div>
+                <div style="text-align: left;">
+                    <span style="color: #64748b; font-size: 0.9rem; text-transform: uppercase;">Desenvolvedor</span><br>
+                    <strong style="font-size: 1.2rem;">Arthur Souza Mendes</strong>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 
-<div class="slide-container">
-    <h2 class="slide-title">02. Protótipo Funcional (v1.0)</h2>
-    <div class="content-area">
-        <div style="display: flex; gap: 20px; width: 100%;">
-            <div class="tile"><h3>Agendar Consulta</h3><p>Escolha de médicos e horários via menu numérico.</p></div>
-            <div class="tile"><h3>Cancelar</h3><p>Liberação de horários em tempo real pelo bot.</p></div>
-            <div class="tile"><h3>Ver Consultas</h3><p>Acesso rápido aos agendamentos confirmados.</p></div>
-            <div class="tile"><h3>Informações</h3><p>Dados de localização e horários do hospital.</p></div>
-        </div>
-    </div>
-</div>
-
-<div class="slide-container">
-    <h2 class="slide-title">03. Arquitetura do Sistema</h2>
-    <div class="content-area" style="align-items: center;">
-        <div style="display: flex; gap: 20px; align-items: center; margin-top: 50px;">
-            <div style="border: 2px solid #00205b; padding: 20px; text-align: center; width: 250px;"><strong>Interface</strong><br>WhatsApp</div>
-            <i class="fa-solid fa-arrow-right" style="color:#00a3e0; font-size: 24px;"></i>
-            <div style="border: 2px solid #00a3e0; padding: 20px; text-align: center; width: 250px; background: #e6f6fc;"><strong>Lógica</strong><br>Python / API</div>
-            <i class="fa-solid fa-arrow-right" style="color:#00a3e0; font-size: 24px;"></i>
-            <div style="border: 2px solid #00205b; padding: 20px; text-align: center; width: 250px;"><strong>Dados</strong><br>Dicionários/Listas</div>
-        </div>
-        <p style="margin-top: 60px;"><em>Justificativa: Python permite prototipagem rápida e tratamento eficiente da lógica de negócios.</em></p>
-    </div>
-</div>
-
-<div class="slide-container">
-    <h2 class="slide-title">04. Demonstração em Tempo Real</h2>
-    <div class="content-area">
-        <div class="two-column" style="align-items: center;">
+    <!-- SLIDE 2: O PROBLEMA (Light) -->
+    <section class="slide bg-light">
+        <div class="slide-content grid-2">
             <div>
-                <h3>A Solução em Prática</h3>
-                <p>Nesta demonstração, o chatbot processa as intenções do usuário de forma assíncrona.</p>
-                <ul>
-                    <li>Navegação por menu intuitivo</li>
-                    <li>Resposta instantânea</li>
-                    <li>Tratamento de entradas incorretas</li>
+                <div class="badge">O Desafio</div>
+                <h2 class="title-section">O gargalo no <span>atendimento primário.</span></h2>
+                <p>O acesso à saúde sofre com canais de comunicação lentos. Pacientes enfrentam linhas telefônicas ocupadas e filas físicas apenas para realizar processos administrativos simples, como agendar um retorno.</p>
+                <ul style="list-style: none; margin-top: 30px;">
+                    <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px; font-size: 1.2rem; color: #334155;">
+                        <i class="fa-solid fa-clock" style="color: #ef4444; font-size: 1.5rem;"></i> Tempo de espera excessivo
+                    </li>
+                    <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px; font-size: 1.2rem; color: #334155;">
+                        <i class="fa-solid fa-user-xmark" style="color: #ef4444; font-size: 1.5rem;"></i> Altas taxas de no-show (faltas)
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 15px; font-size: 1.2rem; color: #334155;">
+                        <i class="fa-solid fa-phone-slash" style="color: #ef4444; font-size: 1.5rem;"></i> Sobrecarga da recepção
+                    </li>
                 </ul>
             </div>
+            <div style="background: #0f172a; border-radius: 30px; padding: 60px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.1);">
+                <i class="fa-solid fa-hospital-user" style="font-size: 180px; color: #38bdf8; filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.4));"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 3: FUNCIONALIDADES (Dark) -->
+    <section class="slide bg-dark">
+        <div class="slide-content">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <div class="badge">O Protótipo v1.0</div>
+                <h2 class="title-section">Funcionalidades <span>Essenciais</span></h2>
+            </div>
+            <div class="card-grid">
+                <div class="card">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <h3>Agendar Consulta</h3>
+                    <p>Fluxo guiado por menu numérico para escolha rápida de especialidade médica, dia e horário.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-calendar-xmark"></i>
+                    <h3>Cancelar Horário</h3>
+                    <p>Paciente libera o horário no sistema de forma autônoma, abrindo vaga para outros sem precisar ligar.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-list-check"></i>
+                    <h3>Ver Consultas</h3>
+                    <p>Acesso instantâneo aos agendamentos confirmados pelo número do celular registrado.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <h3>Informações do Hospital</h3>
+                    <p>FAQ automatizado com dados de localização, preparo para exames e horários de funcionamento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 4: ARQUITETURA (Light) -->
+    <section class="slide bg-light">
+        <div class="slide-content">
+            <div class="badge">Por debaixo dos panos</div>
+            <h2 class="title-section">Arquitetura de <span>Software</span></h2>
+            <p>O sistema foi desenhado separando a camada de visualização (Front-end) da lógica de negócios (Back-end), garantindo que o processamento em Python responda de forma quase instantânea.</p>
+            
+            <div class="flow-container">
+                <div class="flow-box">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <h4>Interface (Paciente)</h4>
+                    <p>App WhatsApp Mobile<br>Entrada/Saída de Dados</p>
+                </div>
+                
+                <i class="fa-solid fa-arrow-right-arrow-left flow-arrow"></i>
+                
+                <div class="flow-box highlight">
+                    <i class="fa-brands fa-python"></i>
+                    <h4>Lógica (Motor)</h4>
+                    <p>Script Python<br>If/Else e Validação JSON</p>
+                </div>
+
+                <i class="fa-solid fa-arrow-right-arrow-left flow-arrow"></i>
+
+                <div class="flow-box">
+                    <i class="fa-solid fa-database"></i>
+                    <h4>Memória (Dados)</h4>
+                    <p>Dicionários do Python<br>Armazenamento da Agenda</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 5: VÍDEO NO CELULAR (Dark) -->
+    <section class="slide bg-gradient-tech">
+        <div class="slide-content grid-2">
             <div>
-                <div class="video-container">
-                    <video controls>
+                <div class="badge">Demonstração Real</div>
+                <h2 class="title-section">O chatbot em <span>Ação</span></h2>
+                <p>Veja como o sistema processa as intenções do usuário. Focamos em uma experiência livre de frustrações:</p>
+                
+                <div class="card" style="margin-top: 30px; padding: 25px;">
+                    <div style="display: flex; gap: 20px; align-items: flex-start; margin-bottom: 20px;">
+                        <i class="fa-solid fa-bolt" style="font-size: 1.5rem; color:#facc15; margin:0;"></i>
+                        <div>
+                            <h4 style="font-size: 1.2rem; margin-bottom: 5px;">Resposta Instantânea</h4>
+                            <p style="font-size: 1rem; margin:0;">Processamento local sem latência humana.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 20px; align-items: flex-start;">
+                        <i class="fa-solid fa-shield-halved" style="font-size: 1.5rem; color:#10b981; margin:0;"></i>
+                        <div>
+                            <h4 style="font-size: 1.2rem; margin-bottom: 5px;">Prevenção de Erros</h4>
+                            <p style="font-size: 1rem; margin:0;">Menus numéricos impedem erros de digitação.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- A MÁGICA: MOCKUP DE IPHONE -->
+            <div>
+                <div class="phone-mockup">
+                    <div class="phone-notch"></div>
+                    <!-- IMPORTANTE: O SEU VÍDEO ESTÁ AQUI -->
+                    <video controls preload="metadata">
                         <source src="chatbot.mp4" type="video/mp4">
+                        Seu navegador não suporta vídeos.
                     </video>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 
-<div class="slide-container">
-    <h2 class="slide-title">05. Qualidade Técnica e Colaboração</h2>
-    <div class="content-area">
-        <div class="two-column">
-            <div style="background:#f8f9fa; padding:30px; border-left: 4px solid #00205b;">
-                <h3><i class="fa-brands fa-github"></i> Repositório GitHub</h3>
-                <p>Uso de versionamento para garantir a integridade do código e facilitar o trabalho colaborativo entre Arthur e Souza.</p>
-            </div>
-            <div style="background:#f8f9fa; padding:30px; border-left: 4px solid #00a3e0;">
-                <h3><i class="fa-solid fa-code"></i> Código Python</h3>
-                <p>Indentação rigorosa e uso de estruturas condicionais e laços de repetição para um fluxo de interação contínuo e livre de erros.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="slide-container">
-    <h2 class="slide-title">06. Direcionamento de Carreira</h2>
-    <div class="content-area">
-        <div class="two-column">
+    <!-- SLIDE 6: EVIDÊNCIAS E CARREIRA (Light) -->
+    <section class="slide bg-light">
+        <div class="slide-content grid-2">
             <div>
-                <h3>Visão Profissional</h3>
-                <p>Este projeto despertou nosso interesse para o aprofundamento em <strong>Engenharia de Software</strong>, visando o desenvolvimento de arquiteturas em nuvem para sistemas de alta disponibilidade na área da saúde.</p>
+                <h2 class="title-section" style="font-size: 2.8rem;">Qualidade <span>Técnica</span></h2>
+                <p>Nossa base para o projeto foi garantir que o código não fosse apenas funcional, mas também profissional.</p>
+                
+                <div style="margin-top: 40px; display: flex; flex-direction: column; gap: 20px;">
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 25px; border-radius: 16px; border-left: 4px solid #000;">
+                        <h4 style="font-size: 1.3rem; margin-bottom: 10px;"><i class="fa-brands fa-github" style="margin-right: 10px;"></i> Repositório Git</h4>
+                        <p style="font-size: 1rem; margin:0;">Versionamento de código e colaboração ativa entre a dupla garantindo a integridade do projeto.</p>
+                    </div>
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 25px; border-radius: 16px; border-left: 4px solid #3b82f6;">
+                        <h4 style="font-size: 1.3rem; margin-bottom: 10px;"><i class="fa-solid fa-code" style="margin-right: 10px;"></i> Lógica Python</h4>
+                        <p style="font-size: 1rem; margin:0;">Uso rigoroso de indentação e loops de repetição (`while True`) para manter o bot sempre ativo.</p>
+                    </div>
+                </div>
             </div>
-            <div style="background: #f8f9fa; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
-                <i class="fa-solid fa-code-branch" style="font-size: 150px; color: #00a3e0;"></i>
+            <div style="background: #0f172a; padding: 50px; border-radius: 30px; color: white;">
+                <i class="fa-solid fa-rocket" style="font-size: 4rem; color: #38bdf8; margin-bottom: 20px;"></i>
+                <h2 style="font-family: 'Poppins'; font-size: 2rem; margin-bottom: 20px;">Visão de Carreira</h2>
+                <p style="color: #94a3b8; font-size: 1.1rem;">Este projeto foi o pontapé inicial. Nossa visão futura envolve o aprofundamento em:</p>
+                <ul style="list-style: none; margin-top: 20px;">
+                    <li style="margin-bottom: 15px; font-size: 1.1rem; color: #f8fafc;"><strong style="color: #38bdf8;">1.</strong> Inteligência Artificial e NLP (Processamento de Linguagem Natural).</li>
+                    <li style="font-size: 1.1rem; color: #f8fafc;"><strong style="color: #38bdf8;">2.</strong> Engenharia de Software focada em infraestrutura Cloud para Saúde.</li>
+                </ul>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 
-<div class="slide-container">
-    <div style="text-align: center; width: 100%;">
-        <h2 style="font-size: 60px;">Obrigado!</h2>
-        <div class="links-box">
-            <p style="font-weight: bold; margin-bottom: 15px; color: #00205b;">EVIDÊNCIAS DE DESENVOLVIMENTO:</p>
-            <p><i class="fa-brands fa-github"></i> <strong>Repositório do Projeto:</strong> <a href="https://github.com/mourazks/chatbotHospital" target="_blank">github.com/mourazks/chatbotHospital</a></p>
-            <p><i class="fa-brands fa-github"></i> <strong>Arthur Souza:</strong> <a href="https://github.com/Souzaxasm" target="_blank">github.com/Souzaxasm</a></p>
+    <!-- SLIDE 7: LINKS FINAIS (Dark) -->
+    <section class="slide bg-dark" style="text-align: center;">
+        <div class="blob blob-1" style="background: #38bdf8;"></div>
+        <div class="slide-content">
+            <h2 class="title-main" style="font-size: 6rem; margin-bottom: 10px;">Obrigado!</h2>
+            <p style="font-size: 1.5rem; margin-bottom: 60px;">Acesse nosso código-fonte completo abaixo:</p>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                <a href="https://github.com/mourazks/chatbotHospital" target="_blank" class="github-btn">
+                    <i class="fa-brands fa-github" style="font-size: 1.5rem;"></i> 
+                    Repositório: chatbotHospital
+                </a>
+                
+                <div style="display: flex; gap: 20px; margin-top: 20px;">
+                    <a href="https://github.com/mourazks" target="_blank" class="github-btn" style="background: transparent; border: 1px solid #38bdf8; color: #38bdf8;">
+                        <i class="fa-solid fa-user"></i> Arthur Moura
+                    </a>
+                    <a href="https://github.com/Souzaxasm" target="_blank" class="github-btn" style="background: transparent; border: 1px solid #38bdf8; color: #38bdf8;">
+                        <i class="fa-solid fa-user"></i> Arthur Souza
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    </section>
 
 </body>
 </html>
